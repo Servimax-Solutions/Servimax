@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Servimax Envíos y Soluciones | Florida, NY</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0D2E5A; --navy-mid: #174b8f; --navy-lt: #1a5aaa;
+  --gold: #E8A020; --gold-dk: #b87c12; --gold-lt: #FAE8C0;
+  --cream: #F8F4EC; --cream-dk: #EDE7D9;
+  --white: #FFFFFF; --text: #1C1C1C; --text-mid: #4A4A4A; --text-lt: #7A7A7A;
+  --radius: 14px; --radius-sm: 8px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* LANG BAR */
+.lang-bar { position: fixed; top:0; left:0; right:0; z-index:1000; background:var(--navy); display:flex; align-items:center; justify-content:space-between; padding:10px 28px; box-shadow:0 2px 16px rgba(13,46,90,0.18); }
+.lang-toggle { display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(232,160,32,0.4); border-radius:30px; padding:4px 6px; }
+.lang-btn { background:none; border:none; color:rgba(255,255,255,0.55); font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; cursor:pointer; padding:4px 12px; border-radius:22px; letter-spacing:0.5px; transition:all 0.25s; }
+.lang-btn.active { background:var(--gold); color:var(--navy); }
+.lang-bar-contact { display:flex; align-items:center; gap:18px; }
+.lang-bar-contact a { color:rgba(255,255,255,0.75); font-size:12px; font-weight:600; text-decoration:none; transition:color 0.2s; }
+.lang-bar-contact a:hover { color:var(--gold); }
+.lang-bar-contact .sep { color:rgba(255,255,255,0.2); }
+
+/* HERO */
+.hero { margin-top:46px; background:var(--navy); position:relative; overflow:hidden; min-height:88vh; display:flex; align-items:center; }
+.hero-pattern { position:absolute; inset:0; background-image: radial-gradient(circle at 20% 50%, rgba(232,160,32,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(26,90,170,0.25) 0%, transparent 45%), radial-gradient(circle at 60% 80%, rgba(232,160,32,0.05) 0%, transparent 40%); }
+.hero-geo  { position:absolute; right:-80px; top:-80px; width:520px; height:520px; border:1.5px solid rgba(232,160,32,0.12); border-radius:50%; }
+.hero-geo2 { position:absolute; right:-30px; top:-30px; width:380px; height:380px; border:1.5px solid rgba(232,160,32,0.08); border-radius:50%; }
+.hero-geo3 { position:absolute; bottom:-120px; left:-60px; width:400px; height:400px; border:1px solid rgba(232,160,32,0.06); border-radius:50%; }
+.hero-inner { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:80px 32px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+.hero-eyebrow::before { content:''; display:block; width:28px; height:2px; background:var(--gold); border-radius:2px; }
+.hero-h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,54px); font-weight:700; color:#fff; line-height:1.18; margin-bottom:22px; }
+.hero-h1 span { color:var(--gold); }
+.hero-desc { font-size:16px; color:rgba(255,255,255,0.72); line-height:1.75; margin-bottom:36px; }
+.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-primary { background:var(--gold); color:var(--navy); border:none; border-radius:50px; padding:14px 28px; font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; cursor:pointer; text-decoration:none; display:inline-block; transition:transform 0.2s,box-shadow 0.2s; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(232,160,32,0.35); }
+.btn-outline { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.3); border-radius:50px; padding:14px 28px; font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; cursor:pointer; text-decoration:none; display:inline-block; transition:all 0.2s; }
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+.hero-right { display:flex; justify-content:center; }
+.hero-card { background:rgba(255,255,255,0.06); border:1px solid rgba(232,160,32,0.2); border-radius:22px; padding:32px 28px; width:100%; max-width:380px; backdrop-filter:blur(8px); }
+.hero-card-title { font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); margin-bottom:22px; font-weight:600; }
+.hero-service-list { list-style:none; display:flex; flex-direction:column; gap:14px; }
+.hero-service-list li { display:flex; align-items:center; gap:12px; color:rgba(255,255,255,0.88); font-size:14px; font-weight:600; }
+.hero-service-icon { width:36px; height:36px; background:rgba(232,160,32,0.12); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+.hero-hours { margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between; }
+.hero-hours-label { font-size:12px; color:rgba(255,255,255,0.5); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+.hero-hours-val { font-size:14px; color:var(--gold); font-weight:700; }
+.badge-open { background:rgba(72,199,116,0.18); color:#5de68a; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; border:1px solid rgba(72,199,116,0.3); }
+
+/* TRUST STRIP */
+.trust-strip { background:var(--cream-dk); border-top:1px solid rgba(13,46,90,0.08); border-bottom:1px solid rgba(13,46,90,0.08); padding:22px 32px; }
+.trust-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:40px; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:10px; }
+.trust-num { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--navy); }
+.trust-label { font-size:12px; font-weight:600; color:var(--text-mid); line-height:1.4; text-transform:uppercase; letter-spacing:0.4px; }
+.trust-sep { width:1px; height:40px; background:rgba(13,46,90,0.15); }
+
+/* SECTIONS */
+.section { padding:90px 32px; }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dk); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.section-label::before { content:''; display:block; width:24px; height:2px; background:var(--gold); border-radius:2px; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--navy); line-height:1.22; margin-bottom:14px; }
+.section-desc { font-size:16px; color:var(--text-mid); line-height:1.75; max-width:580px; margin-bottom:50px; }
+
+/* SERVICES GRID */
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
+.service-card { background:var(--white); border:1px solid rgba(13,46,90,0.08); border-radius:var(--radius); padding:30px 24px; position:relative; overflow:hidden; transition:transform 0.25s,box-shadow 0.25s; }
+.service-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--gold); border-radius:var(--radius) var(--radius) 0 0; }
+.service-card:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(13,46,90,0.1); }
+.service-emoji { font-size:32px; margin-bottom:16px; }
+.service-name { font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--navy); margin-bottom:10px; }
+.service-text { font-size:14px; color:var(--text-mid); line-height:1.65; }
+.service-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+.service-tag { font-size:11px; font-weight:700; background:var(--gold-lt); color:var(--gold-dk); padding:3px 10px; border-radius:20px; }
+
+/* GROCERY */
+.grocery-bg { background:var(--navy); }
+.grocery-header .section-title { color:#fff; }
+.grocery-header .section-label { color:var(--gold); }
+.grocery-header .section-label::before { background:var(--gold); }
+.grocery-header .section-desc { color:rgba(255,255,255,0.65); }
+.grocery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
+.grocery-item { background:rgba(255,255,255,0.05); border:1px solid rgba(232,160,32,0.15); border-radius:var(--radius); padding:24px 18px; text-align:center; transition:background 0.25s,border-color 0.25s; }
+.grocery-item:hover { background:rgba(232,160,32,0.08); border-color:rgba(232,160,32,0.35); }
+.grocery-icon { font-size:30px; margin-bottom:10px; }
+.grocery-name { font-size:13px; font-weight:700; color:rgba(255,255,255,0.9); }
+.grocery-sub { font-size:11px; color:rgba(255,255,255,0.45); margin-top:4px; }
+
+/* REVIEWS */
+.reviews-bg { background:var(--cream-dk); }
+.stars { color:var(--gold); font-size:16px; margin-bottom:10px; letter-spacing:1px; }
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.review-card { background:var(--white); border:1px solid rgba(13,46,90,0.07); border-radius:var(--radius); padding:28px 24px; position:relative; }
+.review-quote { position:absolute; top:20px; right:22px; font-size:48px; font-family:'Playfair Display',serif; color:rgba(232,160,32,0.15); line-height:1; pointer-events:none; }
+.review-text { font-size:14px; color:var(--text-mid); line-height:1.75; font-style:italic; margin-bottom:18px; }
+.review-author { display:flex; align-items:center; gap:10px; }
+.review-avatar { width:38px; height:38px; border-radius:50%; background:var(--navy); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:var(--gold); flex-shrink:0; }
+.review-name { font-size:14px; font-weight:700; color:var(--navy); }
+.review-location { font-size:12px; color:var(--text-lt); }
+.google-badge { display:inline-flex; align-items:center; gap:6px; background:var(--white); border:1px solid rgba(13,46,90,0.1); border-radius:30px; padding:8px 16px; font-size:13px; font-weight:700; color:var(--navy); margin-bottom:40px; text-decoration:none; }
+.google-g { color:#4285F4; font-weight:900; font-size:15px; }
+
+/* PAYMENT */
+.payment-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+.payment-card { background:var(--white); border:1px solid rgba(13,46,90,0.08); border-radius:var(--radius); padding:28px 24px; text-align:center; border-top:3px solid var(--gold); }
+.payment-icon { font-size:32px; margin-bottom:12px; }
+.payment-name { font-family:'Playfair Display',serif; font-size:17px; font-weight:600; color:var(--navy); margin-bottom:8px; }
+.payment-sub { font-size:13px; color:var(--text-mid); line-height:1.6; margin:0; }
+
+/* INFO BAND */
+.info-band { background:var(--navy); padding:70px 32px; }
+.info-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:36px; }
+.info-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--gold); margin-bottom:8px; }
+.info-value { font-size:15px; color:rgba(255,255,255,0.9); font-weight:600; line-height:1.55; }
+.info-sub { font-size:13px; color:rgba(255,255,255,0.45); margin-top:4px; }
+
+/* FOOTER */
+footer { background:#09203F; padding:32px; text-align:center; }
+.footer-logo { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--gold); margin-bottom:8px; }
+.footer-tagline { font-size:12px; color:rgba(255,255,255,0.35); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:16px; }
+.footer-social { display:flex; justify-content:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.social-btn { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.13); border-radius:30px; padding:9px 20px; color:rgba(255,255,255,0.85); font-size:13px; font-weight:700; text-decoration:none; transition:all 0.2s; }
+.social-btn:hover { border-color:var(--gold); color:var(--gold); }
+.footer-links { display:flex; justify-content:center; gap:22px; flex-wrap:wrap; margin-bottom:18px; }
+.footer-links a { font-size:13px; color:rgba(255,255,255,0.5); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+.footer-copy { font-size:12px; color:rgba(255,255,255,0.25); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+.hero-left > * { animation:fadeUp 0.65s ease both; }
+.hero-left > *:nth-child(1) { animation-delay:0.1s; }
+.hero-left > *:nth-child(2) { animation-delay:0.22s; }
+.hero-left > *:nth-child(3) { animation-delay:0.34s; }
+.hero-left > *:nth-child(4) { animation-delay:0.46s; }
+.hero-right { animation:fadeUp 0.65s 0.55s ease both; }
+
+/* LANG SWITCHING */
+[data-lang="es"] { display:none; }
+body.es [data-lang="en"] { display:none; }
+body.es [data-lang="es"] { display:unset; }
+.flex-es { display:none; }
+body.es .flex-en { display:none; }
+body.es .flex-es { display:flex; }
+li[data-lang="es"] { display:none; }
+body.es li[data-lang="en"] { display:none; }
+body.es li[data-lang="es"] { display:flex; }
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .hero-inner { grid-template-columns:1fr; gap:36px; padding:56px 20px 60px; }
+  .hero-right { order:-1; }
+  .hero-card { max-width:100%; }
+  .section { padding:60px 20px; }
+  .trust-inner { gap:24px; }
+  .trust-sep { display:none; }
+  .lang-bar-contact .hide-mobile { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+  </div>
+  <div class="lang-bar-contact">
+    <a href="tel:8455086003">&#9990; (845) 508-6003</a>
+    <span class="sep">|</span>
+    <a href="https://maps.google.com/?q=22+Meadow+Rd+Florida+NY+10921" target="_blank" class="hide-mobile">&#9679; 22 Meadow Rd, Florida, NY</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-geo"></div>
+  <div class="hero-geo2"></div>
+  <div class="hero-geo3"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span data-lang="en">Florida, NY · Open Every Day</span>
+        <span data-lang="es">Florida, NY · Abierto Todos los Días</span>
+      </div>
+      <h1 class="hero-h1">
+        <span data-lang="en">Your Neighborhood <span>Connection</span> for Food, Finance, and More</span>
+        <span data-lang="es">Tu Vecindario, Tu <span>Conexión</span> para Comida, Finanzas y Más</span>
+      </h1>
+      <p class="hero-desc">
+        <span data-lang="en">Fresh Latin groceries, tax services, international shipping, official translations, and so much more, all in one welcoming stop at 22 Meadow Rd, Florida, NY.</span>
+        <span data-lang="es">Comestibles latinos frescos, servicios de impuestos, envíos internacionales, traducciones oficiales y mucho más, todo en una sola parada en 22 Meadow Rd, Florida, NY.</span>
+      </p>
+      <div class="hero-ctas flex-en">
+        <a href="https://maps.google.com/?q=22+Meadow+Rd+Florida+NY+10921" class="btn-primary" target="_blank">Get Directions</a>
+        <a href="tel:8455086003" class="btn-outline">Call Us Now</a>
+      </div>
+      <div class="hero-ctas flex-es">
+        <a href="https://maps.google.com/?q=22+Meadow+Rd+Florida+NY+10921" class="btn-primary" target="_blank">Cómo Llegar</a>
+        <a href="tel:8455086003" class="btn-outline">Llámanos</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-title">
+          <span data-lang="en">What We Offer</span>
+          <span data-lang="es">Lo Que Ofrecemos</span>
+        </div>
+        <ul class="hero-service-list">
+          <li data-lang="en"><div class="hero-service-icon">🛒</div> Latin Grocery Store</li>
+          <li data-lang="en"><div class="hero-service-icon">📦</div> International Shipping</li>
+          <li data-lang="en"><div class="hero-service-icon">🧾</div> Tax Services</li>
+          <li data-lang="en"><div class="hero-service-icon">📅</div> Appointments, Medical and Document</li>
+          <li data-lang="en"><div class="hero-service-icon">📄</div> Official Translations</li>
+          <li data-lang="en"><div class="hero-service-icon">✈️</div> Airline Tickets</li>
+          <li data-lang="es"><div class="hero-service-icon">🛒</div> Tienda de Abarrotes Latinos</li>
+          <li data-lang="es"><div class="hero-service-icon">📦</div> Envío de Paquetes</li>
+          <li data-lang="es"><div class="hero-service-icon">🧾</div> Servicios de Impuestos</li>
+          <li data-lang="es"><div class="hero-service-icon">📅</div> Citas para Documentos y Médicas</li>
+          <li data-lang="es"><div class="hero-service-icon">📄</div> Traducciones Oficiales</li>
+          <li data-lang="es"><div class="hero-service-icon">✈️</div> Tiquetes Aéreos</li>
+        </ul>
+        <div class="hero-hours">
+          <div>
+            <div class="hero-hours-label"><span data-lang="en">Hours</span><span data-lang="es">Horario</span></div>
+            <div class="hero-hours-val"><span data-lang="en">Open Every Day at 9 AM</span><span data-lang="es">Abierto Todos los Días a las 9 AM</span></div>
+          </div>
+          <div class="badge-open"><span data-lang="en">Open Now</span><span data-lang="es">Abierto</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-num">5.0</div>
+      <div class="trust-label"><span data-lang="en">Star Google Rating</span><span data-lang="es">Estrellas en Google</span></div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">39+</div>
+      <div class="trust-label"><span data-lang="en">Verified Reviews</span><span data-lang="es">Reseñas Verificadas</span></div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">6+</div>
+      <div class="trust-label"><span data-lang="en">Services in One Stop</span><span data-lang="es">Servicios en Un Lugar</span></div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">Se</div>
+      <div class="trust-label"><span data-lang="en">Habla Español</span><span data-lang="es">Habla Español</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-label"><span data-lang="en">What We Do</span><span data-lang="es">Nuestros Servicios</span></div>
+    <h2 class="section-title"><span data-lang="en">Everything Your Family Needs, Under One Roof</span><span data-lang="es">Todo lo que tu Familia Necesita, Bajo un Solo Techo</span></h2>
+    <p class="section-desc"><span data-lang="en">From stocking your kitchen to filing your taxes, Servimax is built to serve every need of our community.</span><span data-lang="es">Desde surtir tu cocina hasta presentar tus impuestos, Servimax está diseñado para cubrir cada necesidad de nuestra comunidad.</span></p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-emoji">🛒</div>
+        <div class="service-name"><span data-lang="en">Latin Grocery</span><span data-lang="es">Abarrotes Latinos</span></div>
+        <p class="service-text"><span data-lang="en">Fresh produce, authentic spices, imported goods, and the ingredients your family loves. From plantains to tropical drinks, we have it all.</span><span data-lang="es">Productos frescos, especias auténticas, artículos importados y los ingredientes que tu familia ama. Desde plátanos hasta bebidas tropicales.</span></p>
+        <div class="service-tags"><span class="service-tag"><span data-lang="en">Fresh Produce</span><span data-lang="es">Verduras Frescas</span></span><span class="service-tag"><span data-lang="en">Imported Goods</span><span data-lang="es">Artículos Importados</span></span><span class="service-tag"><span data-lang="en">Beer and Wine</span><span data-lang="es">Cervezas y Vinos</span></span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-emoji">🧾</div>
+        <div class="service-name"><span data-lang="en">Tax Services</span><span data-lang="es">Servicios de Impuestos</span></div>
+        <p class="service-text"><span data-lang="en">We help individuals and families prepare and file their taxes accurately and on time. Our team guides you through every step with care and expertise.</span><span data-lang="es">Ayudamos a personas y familias a preparar y presentar sus impuestos de forma precisa y puntual. Nuestro equipo te guía en cada paso.</span></p>
+        <div class="service-tags"><span class="service-tag"><span data-lang="en">Individual Returns</span><span data-lang="es">Declaraciones Individuales</span></span><span class="service-tag"><span data-lang="en">Year-Round Support</span><span data-lang="es">Apoyo Todo el Año</span></span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-emoji">📦</div>
+        <div class="service-name"><span data-lang="en">International Shipping</span><span data-lang="es">Envío de Paquetes</span></div>
+        <p class="service-text"><span data-lang="en">Send packages internationally with confidence. We handle the paperwork and tracking so you can focus on the people back home.</span><span data-lang="es">Envía paquetes internacionalmente con confianza. Nos encargamos del papeleo y el seguimiento para que te concentres en los tuyos.</span></p>
+        <div class="service-tags"><span class="service-tag"><span data-lang="en">Packaging Supplies</span><span data-lang="es">Materiales de Empaque</span></span><span class="service-tag"><span data-lang="en">Tracking Included</span><span data-lang="es">Seguimiento Incluido</span></span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-emoji">📄</div>
+        <div class="service-name"><span data-lang="en">Documents and Translations</span><span data-lang="es">Documentos y Traducciones</span></div>
+        <p class="service-text"><span data-lang="en">Official translations, bill payments, printing, scanning, copies, and cell phone payments and top-ups, all handled with care.</span><span data-lang="es">Traducciones oficiales, pago de facturas, impresión, scanner, copias y pago de celulares y recargas, todo con atención personalizada.</span></p>
+        <div class="service-tags"><span class="service-tag"><span data-lang="en">Official Translation</span><span data-lang="es">Traducción Oficial</span></span><span class="service-tag"><span data-lang="en">Print and Scan</span><span data-lang="es">Impresión y Scanner</span></span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-emoji">📅</div>
+        <div class="service-name"><span data-lang="en">Appointments</span><span data-lang="es">Citas</span></div>
+        <p class="service-text"><span data-lang="en">We help you schedule medical and document appointments so you never have to navigate the process alone.</span><span data-lang="es">Te ayudamos a programar citas médicas y de documentos para que nunca tengas que hacerlo solo.</span></p>
+        <div class="service-tags"><span class="service-tag"><span data-lang="en">Medical</span><span data-lang="es">Médicas</span></span><span class="service-tag"><span data-lang="en">Document</span><span data-lang="es">Documentos</span></span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-emoji">✈️</div>
+        <div class="service-name"><span data-lang="en">Airline Tickets</span><span data-lang="es">Tiquetes Aéreos</span></div>
+        <p class="service-text"><span data-lang="en">Planning a trip? We help you book airline tickets quickly and affordably so you can get back to the people who matter most.</span><span data-lang="es">¿Planeando un viaje? Te ayudamos a reservar tiquetes aéreos de forma rápida y asequible para que puedas volver con quienes más importan.</span></p>
+        <div class="service-tags"><span class="service-tag"><span data-lang="en">Fast Booking</span><span data-lang="es">Reserva Rápida</span></span><span class="service-tag"><span data-lang="en">Best Prices</span><span data-lang="es">Mejores Precios</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROCERY HIGHLIGHTS -->
+<section class="section grocery-bg">
+  <div class="section-inner">
+    <div class="grocery-header">
+      <div class="section-label"><span data-lang="en">Fresh and Authentic</span><span data-lang="es">Fresco y Auténtico</span></div>
+      <h2 class="section-title"><span data-lang="en">The Taste of Home, Right Here in Florida, NY</span><span data-lang="es">El Sabor de Casa, Aquí Mismo en Florida, NY</span></h2>
+      <p class="section-desc"><span data-lang="en">You no longer have to drive to the city for the real thing. We bring authentic Latin flavors straight to your neighborhood.</span><span data-lang="es">Ya no tienes que manejar a la ciudad para encontrar lo auténtico. Traemos sabores latinos genuinos directo a tu vecindario.</span></p>
+    </div>
+    <div class="grocery-grid">
+      <div class="grocery-item"><div class="grocery-icon">🌿</div><div class="grocery-name"><span data-lang="en">Fresh Herbs</span><span data-lang="es">Hierbas Frescas</span></div><div class="grocery-sub"><span data-lang="en">Cilantro, culantro and more</span><span data-lang="es">Cilantro, culantro y más</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🍌</div><div class="grocery-name"><span data-lang="en">Plantains and Yuca</span><span data-lang="es">Plátanos y Yuca</span></div><div class="grocery-sub"><span data-lang="en">Fresh and ripe</span><span data-lang="es">Frescos y maduros</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🌶️</div><div class="grocery-name"><span data-lang="en">Chiles and Spices</span><span data-lang="es">Chiles y Especias</span></div><div class="grocery-sub"><span data-lang="en">Full variety</span><span data-lang="es">Gran variedad</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🥩</div><div class="grocery-name"><span data-lang="en">Latin Cuts of Meat</span><span data-lang="es">Cortes Latinos</span></div><div class="grocery-sub"><span data-lang="en">Specialty selections</span><span data-lang="es">Selecciones especiales</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🫙</div><div class="grocery-name"><span data-lang="en">Imported Sauces</span><span data-lang="es">Salsas Importadas</span></div><div class="grocery-sub"><span data-lang="en">From across Latin America</span><span data-lang="es">De toda Latinoamérica</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🥤</div><div class="grocery-name"><span data-lang="en">Tropical Drinks</span><span data-lang="es">Bebidas Tropicales</span></div><div class="grocery-sub"><span data-lang="en">Juices, sodas and more</span><span data-lang="es">Jugos, sodas y más</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🍷</div><div class="grocery-name"><span data-lang="en">Beer and Wine</span><span data-lang="es">Cervezas y Vinos</span></div><div class="grocery-sub"><span data-lang="en">For every occasion</span><span data-lang="es">Para toda ocasión</span></div></div>
+      <div class="grocery-item"><div class="grocery-icon">🫘</div><div class="grocery-name"><span data-lang="en">Beans and Rice</span><span data-lang="es">Frijoles y Arroz</span></div><div class="grocery-sub"><span data-lang="en">Every variety</span><span data-lang="es">Todas las variedades</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews-bg">
+  <div class="section-inner">
+    <div class="section-label"><span data-lang="en">Community Reviews</span><span data-lang="es">Opiniones de la Comunidad</span></div>
+    <h2 class="section-title"><span data-lang="en">What Our Neighbors Are Saying</span><span data-lang="es">Lo Que Dicen Nuestros Vecinos</span></h2>
+    <a href="https://share.google/UsNPXqcD6zlbjadzD" class="google-badge" target="_blank"><span class="google-g">G</span><span data-lang="en">5.0 Stars on Google, 39 Reviews</span><span data-lang="es">5.0 Estrellas en Google, 39 Reseñas</span></a>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"I send money to my family every month and this place is always fast and reliable. The staff treats you like family."</span><span data-lang="es">"Envío dinero a mi familia cada mes y este lugar siempre es rápido y confiable. El personal te trata como familia."</span></p><div class="review-author"><div class="review-avatar">MG</div><div><div class="review-name">Maria G.</div><div class="review-location">Florida, NY</div></div></div></div>
+      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"Best place to find authentic Latin products in the area. I drove 20 minutes just to shop here and it was worth every mile."</span><span data-lang="es">"El mejor lugar para encontrar productos latinos auténticos en el área. Manejé 20 minutos solo para comprar aquí y valió la pena."</span></p><div class="review-author"><div class="review-avatar">CR</div><div><div class="review-name">Carlos R.</div><div class="review-location">Middletown, NY</div></div></div></div>
+      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"They helped me ship a package to Honduras with no stress at all. Quick, affordable, and the team speaks Spanish."</span><span data-lang="es">"Me ayudaron a enviar un paquete a Honduras sin ningún estrés. Rápido, asequible y el equipo habla español."</span></p><div class="review-author"><div class="review-avatar">LM</div><div><div class="review-name">Luisa M.</div><div class="review-location">Goshen, NY</div></div></div></div>
+      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"The official translation service saved me so much time. They were professional and got it done fast."</span><span data-lang="es">"El servicio de traducción oficial me ahorró muchísimo tiempo. Fueron profesionales y lo hicieron rápido."</span></p><div class="review-author"><div class="review-avatar">JR</div><div><div class="review-name">Juan R.</div><div class="review-location">Warwick, NY</div></div></div></div>
+      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"I got groceries, topped up my phone, and picked up a bottle of wine on the same trip. This place is a lifesaver."</span><span data-lang="es">"Compré comida, recargué mi celular y recogí una botella de vino en el mismo viaje. Este lugar es indispensable."</span></p><div class="review-author"><div class="review-avatar">AP</div><div><div class="review-name">Ana P.</div><div class="review-location">Florida, NY</div></div></div></div>
+      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"Servimax helped me book my flight home at a great price. The staff is knowledgeable and truly cares about their customers."</span><span data-lang="es">"Servimax me ayudó a reservar mi vuelo de regreso a casa a un precio excelente. El personal de verdad se preocupa por sus clientes."</span></p><div class="review-author"><div class="review-avatar">EM</div><div><div class="review-name">Elena M.</div><div class="review-location">Newburgh, NY</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<section class="section" style="background:var(--cream); padding-top:60px; padding-bottom:60px;">
+  <div class="section-inner">
+    <div class="section-label"><span data-lang="en">Convenient Payments</span><span data-lang="es">Pagos Convenientes</span></div>
+    <h2 class="section-title"><span data-lang="en">We Accept All Major Payment Methods</span><span data-lang="es">Aceptamos Todos los Métodos de Pago</span></h2>
+    <p class="section-desc"><span data-lang="en">Pay however is easiest for you. We accept cash, all major credit cards, and Google Pay for a fast, contactless checkout.</span><span data-lang="es">Paga como más te convenga. Aceptamos efectivo, todas las tarjetas principales y Google Pay para un pago rápido y sin contacto.</span></p>
+    <div class="payment-grid">
+      <div class="payment-card"><div class="payment-icon">💵</div><div class="payment-name"><span data-lang="en">Cash</span><span data-lang="es">Efectivo</span></div><p class="payment-sub"><span data-lang="en">Always welcome. No minimums, no fees.</span><span data-lang="es">Siempre bienvenido. Sin mínimos ni cargos.</span></p></div>
+      <div class="payment-card"><div class="payment-icon">💳</div><div class="payment-name"><span data-lang="en">Credit Cards</span><span data-lang="es">Tarjetas de Crédito</span></div><p class="payment-sub"><span data-lang="en">Visa, Mastercard, Amex, and Discover</span><span data-lang="es">Visa, Mastercard, Amex y Discover</span></p></div>
+      <div class="payment-card"><div class="payment-icon">📱</div><div class="payment-name">Google Pay</div><p class="payment-sub"><span data-lang="en">Tap and go. Fast, secure, and contactless checkout.</span><span data-lang="es">Toca y listo. Pago rápido, seguro y sin contacto.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAND -->
+<div class="info-band">
+  <div class="info-inner">
+    <div>
+      <div style="font-size:24px; margin-bottom:12px;">📍</div>
+      <div class="info-label"><span data-lang="en">Location</span><span data-lang="es">Ubicación</span></div>
+      <div class="info-value">22 Meadow Rd<br>Florida, NY 10921</div>
+      <div class="info-sub"><a href="https://maps.google.com/?q=22+Meadow+Rd+Florida+NY+10921" target="_blank" style="color:var(--gold);text-decoration:none;font-size:13px;"><span data-lang="en">Open in Google Maps</span><span data-lang="es">Abrir en Google Maps</span></a></div>
+    </div>
+    <div>
+      <div style="font-size:24px; margin-bottom:12px;">🕐</div>
+      <div class="info-label"><span data-lang="en">Hours</span><span data-lang="es">Horario</span></div>
+      <div class="info-value"><span data-lang="en">Every Day, 9:00 AM to 9:00 PM</span><span data-lang="es">Todos los Días, 9:00 AM a 9:00 PM</span></div>
+      <div class="info-sub"><span data-lang="en">Including weekends and holidays</span><span data-lang="es">Incluyendo fines de semana y feriados</span></div>
+    </div>
+    <div>
+      <div style="font-size:24px; margin-bottom:12px;">📞</div>
+      <div class="info-label"><span data-lang="en">Phone</span><span data-lang="es">Teléfono</span></div>
+      <div class="info-value"><a href="tel:8455086003" style="color:inherit;text-decoration:none;">(845) 508-6003</a></div>
+      <div class="info-sub"><span data-lang="en">Se habla español</span><span data-lang="es">Se habla español</span></div>
+    </div>
+    <div>
+      <div style="font-size:24px; margin-bottom:12px;">⭐</div>
+      <div class="info-label"><span data-lang="en">Google Rating</span><span data-lang="es">Calificación en Google</span></div>
+      <div class="info-value" style="color:var(--gold);">5.0 ★★★★★</div>
+      <div class="info-sub"><span data-lang="en">39 verified reviews</span><span data-lang="es">39 reseñas verificadas</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SERVIMAX</div>
+  <div class="footer-tagline">Envíos y Soluciones · Florida, NY</div>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/p/ServiMax-61558775807138/" target="_blank" rel="noopener" class="social-btn" id="fb-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://wa.me/18457751556" target="_blank" rel="noopener" class="social-btn" id="wa-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp +1 (845) 775-1556
+    </a>
+    <a href="https://www.instagram.com/servimaxsolutions/" target="_blank" rel="noopener" class="social-btn" id="ig-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+  </div>
+  <div class="footer-links">
+    <a href="tel:8455086003">(845) 508-6003</a>
+    <a href="https://maps.google.com/?q=22+Meadow+Rd+Florida+NY+10921" target="_blank">22 Meadow Rd, Florida, NY 10921</a>
+  </div>
+  <div class="footer-copy">© 2025 Servimax Envíos y Soluciones. All rights reserved.</div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.classList.toggle('es', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.documentElement.lang = lang;
+}
+document.getElementById('fb-btn').addEventListener('mouseover', function(){ this.style.borderColor='#1877F2'; this.style.color='#1877F2'; });
+document.getElementById('fb-btn').addEventListener('mouseout',  function(){ this.style.borderColor='rgba(255,255,255,0.13)'; this.style.color='rgba(255,255,255,0.85)'; });
+document.getElementById('wa-btn').addEventListener('mouseover', function(){ this.style.borderColor='#25D366'; this.style.color='#25D366'; });
+document.getElementById('wa-btn').addEventListener('mouseout',  function(){ this.style.borderColor='rgba(255,255,255,0.13)'; this.style.color='rgba(255,255,255,0.85)'; });
+document.getElementById('ig-btn').addEventListener('mouseover', function(){ this.style.borderColor='#E1306C'; this.style.color='#E1306C'; });
+document.getElementById('ig-btn').addEventListener('mouseout',  function(){ this.style.borderColor='rgba(255,255,255,0.13)'; this.style.color='rgba(255,255,255,0.85)'; });
+</script>
+</body>
+</html>
