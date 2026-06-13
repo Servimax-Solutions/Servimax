@@ -165,6 +165,35 @@ body.es li[data-lang="es"] { display:flex; }
   .trust-sep { display:none; }
   .lang-bar-contact .hide-mobile { display:none; }
 }
+
+/* CAROUSEL */
+.carousel-outer { position:relative; display:flex; align-items:center; gap:12px; }
+.carousel-viewport { overflow:hidden; width:100%; border-radius:var(--radius); }
+.carousel-track { display:flex; transition:transform 0.5s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
+.carousel-slide { min-width:100%; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:4px 2px; }
+.carousel-btn { flex-shrink:0; width:44px; height:44px; border-radius:50%; background:var(--navy); border:2px solid var(--gold); color:var(--gold); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; z-index:2; }
+.carousel-btn:hover { background:var(--gold); color:var(--navy); }
+.carousel-btn:disabled { opacity:0.3; cursor:default; }
+.carousel-dots { display:flex; justify-content:center; gap:10px; margin-top:28px; }
+.carousel-dot { width:10px; height:10px; border-radius:50%; background:rgba(13,46,90,0.2); border:none; cursor:pointer; transition:all 0.25s; padding:0; }
+.carousel-dot.active { background:var(--gold); transform:scale(1.25); }
+@media (max-width:768px) {
+  .carousel-slide { grid-template-columns:1fr; }
+  .carousel-btn { width:36px; height:36px; font-size:15px; }
+}
+
+/* INTERACTIVE SERVICE LIST */
+.svc-item { display:flex; align-items:flex-start; gap:12px; cursor:pointer; padding:10px 12px; border-radius:12px; border:1px solid transparent; transition:all 0.25s; position:relative; }
+.svc-item:hover { background:rgba(232,160,32,0.07); border-color:rgba(232,160,32,0.15); }
+.svc-item.active { background:rgba(232,160,32,0.1); border-color:rgba(232,160,32,0.3); }
+.svc-item.active .hero-service-icon { background:rgba(232,160,32,0.25); }
+.svc-item-content { flex:1; min-width:0; }
+.svc-name { display:block; color:rgba(255,255,255,0.92); font-size:13.5px; font-weight:700; line-height:1.3; }
+.svc-desc { font-size:12px; color:rgba(255,255,255,0.55); line-height:1.55; margin-top:5px; max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.3s ease; opacity:0; }
+.svc-item.active .svc-desc { max-height:80px; opacity:1; }
+.svc-arrow { color:rgba(232,160,32,0.5); font-size:18px; font-weight:300; flex-shrink:0; margin-top:2px; transition:transform 0.25s, color 0.25s; line-height:1; }
+.svc-item.active .svc-arrow { color:var(--gold); transform:rotate(90deg); }
+.hero-service-list { gap:4px; }
 </style>
 </head>
 <body>
@@ -217,20 +246,71 @@ body.es li[data-lang="es"] { display:flex; }
           <span data-lang="en">What We Offer</span>
           <span data-lang="es">Lo Que Ofrecemos</span>
         </div>
-        <ul class="hero-service-list">
-          <li data-lang="en"><div class="hero-service-icon">🛒</div> Latin Grocery Store</li>
-          <li data-lang="en"><div class="hero-service-icon">📦</div> International Shipping</li>
-          <li data-lang="en"><div class="hero-service-icon">🧾</div> Tax Services</li>
-          <li data-lang="en"><div class="hero-service-icon">📅</div> Appointments, Medical and Document</li>
-          <li data-lang="en"><div class="hero-service-icon">📄</div> Official Translations</li>
-          <li data-lang="en"><div class="hero-service-icon">✈️</div> Airline Tickets</li>
-          <li data-lang="es"><div class="hero-service-icon">🛒</div> Tienda de Abarrotes Latinos</li>
-          <li data-lang="es"><div class="hero-service-icon">📦</div> Envío de Paquetes</li>
-          <li data-lang="es"><div class="hero-service-icon">🧾</div> Servicios de Impuestos</li>
-          <li data-lang="es"><div class="hero-service-icon">📅</div> Citas para Documentos y Médicas</li>
-          <li data-lang="es"><div class="hero-service-icon">📄</div> Traducciones Oficiales</li>
-          <li data-lang="es"><div class="hero-service-icon">✈️</div> Tiquetes Aéreos</li>
+
+        <!-- INTERACTIVE SERVICE LIST -->
+        <ul class="hero-service-list" id="serviceList">
+          <li class="svc-item active" data-key="grocery">
+            <div class="hero-service-icon">🛒</div>
+            <div class="svc-item-content">
+              <span class="svc-name" data-lang="en">Latin Grocery Store</span>
+              <span class="svc-name" data-lang="es">Tienda de Abarrotes Latinos</span>
+              <div class="svc-desc" data-lang="en">Fresh produce, authentic ingredients, imported goods, tropical drinks, beer and wine — everything your kitchen needs.</div>
+              <div class="svc-desc" data-lang="es">Productos frescos, ingredientes auténticos, artículos importados, bebidas tropicales, cervezas y vinos.</div>
+            </div>
+            <span class="svc-arrow">›</span>
+          </li>
+          <li class="svc-item" data-key="shipping">
+            <div class="hero-service-icon">📦</div>
+            <div class="svc-item-content">
+              <span class="svc-name" data-lang="en">International Shipping</span>
+              <span class="svc-name" data-lang="es">Envío de Paquetes</span>
+              <div class="svc-desc" data-lang="en">Send packages worldwide with confidence. We handle the paperwork, supplies, and tracking every step of the way.</div>
+              <div class="svc-desc" data-lang="es">Envía paquetes al mundo con confianza. Nos encargamos del papeleo, materiales y seguimiento en cada paso.</div>
+            </div>
+            <span class="svc-arrow">›</span>
+          </li>
+          <li class="svc-item" data-key="tax">
+            <div class="hero-service-icon">🧾</div>
+            <div class="svc-item-content">
+              <span class="svc-name" data-lang="en">Tax Services</span>
+              <span class="svc-name" data-lang="es">Servicios de Impuestos</span>
+              <div class="svc-desc" data-lang="en">We help individuals and families file their taxes accurately and on time, with expert guidance at every step.</div>
+              <div class="svc-desc" data-lang="es">Ayudamos a personas y familias a presentar sus impuestos con precisión y puntualidad, con asesoría experta.</div>
+            </div>
+            <span class="svc-arrow">›</span>
+          </li>
+          <li class="svc-item" data-key="appointments">
+            <div class="hero-service-icon">📅</div>
+            <div class="svc-item-content">
+              <span class="svc-name" data-lang="en">Appointments</span>
+              <span class="svc-name" data-lang="es">Citas</span>
+              <div class="svc-desc" data-lang="en">We schedule medical and document appointments for you — so you never have to navigate the process alone.</div>
+              <div class="svc-desc" data-lang="es">Programamos citas médicas y de documentos por ti — para que nunca tengas que hacerlo solo.</div>
+            </div>
+            <span class="svc-arrow">›</span>
+          </li>
+          <li class="svc-item" data-key="translations">
+            <div class="hero-service-icon">📄</div>
+            <div class="svc-item-content">
+              <span class="svc-name" data-lang="en">Official Translations</span>
+              <span class="svc-name" data-lang="es">Traducciones Oficiales</span>
+              <div class="svc-desc" data-lang="en">Certified translations, bill payments, printing, scanning, copies, and phone top-ups — all in one visit.</div>
+              <div class="svc-desc" data-lang="es">Traducciones certificadas, pago de facturas, impresión, scanner, copias y recargas — todo en una visita.</div>
+            </div>
+            <span class="svc-arrow">›</span>
+          </li>
+          <li class="svc-item" data-key="flights">
+            <div class="hero-service-icon">✈️</div>
+            <div class="svc-item-content">
+              <span class="svc-name" data-lang="en">Airline Tickets</span>
+              <span class="svc-name" data-lang="es">Tiquetes Aéreos</span>
+              <div class="svc-desc" data-lang="en">Book flights quickly and affordably. We find the best prices so you can get back to the people who matter most.</div>
+              <div class="svc-desc" data-lang="es">Reserva vuelos rápido y a buen precio. Encontramos las mejores tarifas para que vuelvas con los tuyos.</div>
+            </div>
+            <span class="svc-arrow">›</span>
+          </li>
         </ul>
+
         <div class="hero-hours">
           <div>
             <div class="hero-hours-label"><span data-lang="en">Hours</span><span data-lang="es">Horario</span></div>
@@ -252,7 +332,7 @@ body.es li[data-lang="es"] { display:flex; }
     </div>
     <div class="trust-sep"></div>
     <div class="trust-item">
-      <div class="trust-num">39+</div>
+      <div class="trust-num">73+</div>
       <div class="trust-label"><span data-lang="en">Verified Reviews</span><span data-lang="es">Reseñas Verificadas</span></div>
     </div>
     <div class="trust-sep"></div>
@@ -341,15 +421,92 @@ body.es li[data-lang="es"] { display:flex; }
   <div class="section-inner">
     <div class="section-label"><span data-lang="en">Community Reviews</span><span data-lang="es">Opiniones de la Comunidad</span></div>
     <h2 class="section-title"><span data-lang="en">What Our Neighbors Are Saying</span><span data-lang="es">Lo Que Dicen Nuestros Vecinos</span></h2>
-    <a href="https://share.google/UsNPXqcD6zlbjadzD" class="google-badge" target="_blank"><span class="google-g">G</span><span data-lang="en">5.0 Stars on Google, 39 Reviews</span><span data-lang="es">5.0 Estrellas en Google, 39 Reseñas</span></a>
-    <div class="reviews-grid">
-      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"I send money to my family every month and this place is always fast and reliable. The staff treats you like family."</span><span data-lang="es">"Envío dinero a mi familia cada mes y este lugar siempre es rápido y confiable. El personal te trata como familia."</span></p><div class="review-author"><div class="review-avatar">MG</div><div><div class="review-name">Maria G.</div><div class="review-location">Florida, NY</div></div></div></div>
-      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"Best place to find authentic Latin products in the area. I drove 20 minutes just to shop here and it was worth every mile."</span><span data-lang="es">"El mejor lugar para encontrar productos latinos auténticos en el área. Manejé 20 minutos solo para comprar aquí y valió la pena."</span></p><div class="review-author"><div class="review-avatar">CR</div><div><div class="review-name">Carlos R.</div><div class="review-location">Middletown, NY</div></div></div></div>
-      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"They helped me ship a package to Honduras with no stress at all. Quick, affordable, and the team speaks Spanish."</span><span data-lang="es">"Me ayudaron a enviar un paquete a Honduras sin ningún estrés. Rápido, asequible y el equipo habla español."</span></p><div class="review-author"><div class="review-avatar">LM</div><div><div class="review-name">Luisa M.</div><div class="review-location">Goshen, NY</div></div></div></div>
-      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"The official translation service saved me so much time. They were professional and got it done fast."</span><span data-lang="es">"El servicio de traducción oficial me ahorró muchísimo tiempo. Fueron profesionales y lo hicieron rápido."</span></p><div class="review-author"><div class="review-avatar">JR</div><div><div class="review-name">Juan R.</div><div class="review-location">Warwick, NY</div></div></div></div>
-      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"I got groceries, topped up my phone, and picked up a bottle of wine on the same trip. This place is a lifesaver."</span><span data-lang="es">"Compré comida, recargué mi celular y recogí una botella de vino en el mismo viaje. Este lugar es indispensable."</span></p><div class="review-author"><div class="review-avatar">AP</div><div><div class="review-name">Ana P.</div><div class="review-location">Florida, NY</div></div></div></div>
-      <div class="review-card"><div class="review-quote">"</div><div class="stars">★★★★★</div><p class="review-text"><span data-lang="en">"Servimax helped me book my flight home at a great price. The staff is knowledgeable and truly cares about their customers."</span><span data-lang="es">"Servimax me ayudó a reservar mi vuelo de regreso a casa a un precio excelente. El personal de verdad se preocupa por sus clientes."</span></p><div class="review-author"><div class="review-avatar">EM</div><div><div class="review-name">Elena M.</div><div class="review-location">Newburgh, NY</div></div></div></div>
+    <a href="https://share.google/UsNPXqcD6zlbjadzD" class="google-badge" target="_blank"><span class="google-g">G</span><span data-lang="en">5.0 Stars on Google · 73 Reviews</span><span data-lang="es">5.0 Estrellas en Google · 73 Reseñas</span></a>
+
+    <!-- CAROUSEL WRAPPER -->
+    <div class="carousel-outer">
+      <button class="carousel-btn carousel-prev" id="reviewPrev" aria-label="Previous reviews">&#8592;</button>
+      <div class="carousel-viewport" id="reviewViewport">
+        <div class="carousel-track" id="reviewTrack">
+
+          <!-- SLIDE 1 -->
+          <div class="carousel-slide">
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Their service is excellent, always kind and very helpful. I have shipped with them for some time now and every time the shipments have arrived in great condition and within the expected time."</p>
+              <div class="review-author"><div class="review-avatar">LD</div><div><div class="review-name">Lizeth DelosSantos</div><div class="review-location">Google Review · 1 year ago</div></div></div>
+            </div>
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Great service, 100% recommended if you want to send money or any package. Lovely customer service and a very good location."</p>
+              <div class="review-author"><div class="review-avatar">AR</div><div><div class="review-name">Arley Rizo</div><div class="review-location">Google Review · 1 year ago</div></div></div>
+            </div>
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Servimax provides excellent customer service. They are always very friendly, helpful, and professional. Their prices are affordable and the whole process is quick and easy. Highly recommended!"</p>
+              <div class="review-author"><div class="review-avatar">CT</div><div><div class="review-name">Chava Tellez</div><div class="review-location">Google Review · Recent</div></div></div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 -->
+          <div class="carousel-slide">
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"I have visited Servimax many times and found the store to be extremely clean, well organized, and everything priced competitively. The staff was extremely friendly and knowledgeable. I will continue to go there every time I am in Florida and would recommend it to anyone."</p>
+              <div class="review-author"><div class="review-avatar">KL</div><div><div class="review-name">Kevin Linton</div><div class="review-location">Google Review · Recent</div></div></div>
+            </div>
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Excellent service, excellent store. I am very grateful for the help you provide; it is a blessing."</p>
+              <div class="review-author"><div class="review-avatar">RE</div><div><div class="review-name">Rene Enamorado</div><div class="review-location">Google Review · 7 months ago</div></div></div>
+            </div>
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"I highly recommend Servimax for their excellent customer service and personalized solutions. They have exceeded my expectations! Very friendly and pay close attention to the service you need. 100% recommended!"</p>
+              <div class="review-author"><div class="review-avatar">TV</div><div><div class="review-name">Tostao Varela</div><div class="review-location">Google Review · 11 months ago</div></div></div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 -->
+          <div class="carousel-slide">
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Great place! They were very friendly and patient. I will definitely come back."</p>
+              <div class="review-author"><div class="review-avatar">MA</div><div><div class="review-name">Manuela</div><div class="review-location">Google Review · 1 year ago</div></div></div>
+            </div>
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Both ladies very kind and very helpful."</p>
+              <div class="review-author"><div class="review-avatar">NC</div><div><div class="review-name">Nancy Crespo</div><div class="review-location">Google Review · 11 months ago</div></div></div>
+            </div>
+            <div class="review-card">
+              <div class="review-quote">"</div>
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Good service, courtesy, and good hours. A great neighborhood spot that always comes through."</p>
+              <div class="review-author"><div class="review-avatar">MF</div><div><div class="review-name">Mario Fernandez</div><div class="review-location">Google Review · Recent</div></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="carousel-btn carousel-next" id="reviewNext" aria-label="Next reviews">&#8594;</button>
     </div>
+
+    <!-- DOTS -->
+    <div class="carousel-dots" id="reviewDots">
+      <button class="carousel-dot active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="carousel-dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="carousel-dot" data-slide="2" aria-label="Slide 3"></button>
+    </div>
+
   </div>
 </section>
 
@@ -392,7 +549,7 @@ body.es li[data-lang="es"] { display:flex; }
       <div style="font-size:24px; margin-bottom:12px;">⭐</div>
       <div class="info-label"><span data-lang="en">Google Rating</span><span data-lang="es">Calificación en Google</span></div>
       <div class="info-value" style="color:var(--gold);">5.0 ★★★★★</div>
-      <div class="info-sub"><span data-lang="en">39 verified reviews</span><span data-lang="es">39 reseñas verificadas</span></div>
+      <div class="info-sub"><span data-lang="en">73 verified reviews</span><span data-lang="es">73 reseñas verificadas</span></div>
     </div>
   </div>
 </div>
@@ -435,6 +592,54 @@ document.getElementById('wa-btn').addEventListener('mouseover', function(){ this
 document.getElementById('wa-btn').addEventListener('mouseout',  function(){ this.style.borderColor='rgba(255,255,255,0.13)'; this.style.color='rgba(255,255,255,0.85)'; });
 document.getElementById('ig-btn').addEventListener('mouseover', function(){ this.style.borderColor='#E1306C'; this.style.color='#E1306C'; });
 document.getElementById('ig-btn').addEventListener('mouseout',  function(){ this.style.borderColor='rgba(255,255,255,0.13)'; this.style.color='rgba(255,255,255,0.85)'; });
+
+// Review Carousel
+(function() {
+  var track = document.getElementById('reviewTrack');
+  var dots  = document.querySelectorAll('.carousel-dot');
+  var prev  = document.getElementById('reviewPrev');
+  var next  = document.getElementById('reviewNext');
+  var total = 3;
+  var current = 0;
+
+  function goTo(n) {
+    current = Math.max(0, Math.min(n, total - 1));
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    prev.disabled = current === 0;
+    next.disabled = current === total - 1;
+  }
+
+  prev.addEventListener('click', function() { goTo(current - 1); });
+  next.addEventListener('click', function() { goTo(current + 1); });
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() { goTo(parseInt(this.dataset.slide)); });
+  });
+
+  // Touch/swipe support
+  var startX = 0;
+  track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e) {
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); }
+  }, {passive:true});
+
+  goTo(0);
+})();
+
+
+// Interactive "What We Offer" list
+(function() {
+  var items = document.querySelectorAll('.svc-item');
+  items.forEach(function(item) {
+    item.addEventListener('click', function() {
+      var wasActive = this.classList.contains('active');
+      items.forEach(function(i) { i.classList.remove('active'); });
+      if (!wasActive) this.classList.add('active');
+    });
+  });
+})();
+
 </script>
 </body>
 </html>
